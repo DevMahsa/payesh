@@ -29,7 +29,7 @@ def save_host(length, query):
 
 
 def login():
-    zapi = ZabbixAPI("http://172.16.16.157:4720")
+    zapi = ZabbixAPI("http://192.168.112.157:4720")
     zapi.login("riri", "rayta")
     return zapi
 
