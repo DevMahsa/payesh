@@ -1,0 +1,3 @@
+name,host,server,port,user,password
+golestan_db,172.16.0.111,G2017,1070,ZabbixUser,ForGozare$hZx2018
+eoffice_db,172.16.16.103,'',1433,ZabbixUser,ForGozare$hZx2018
