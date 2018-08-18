@@ -14,16 +14,19 @@ def where_file():
 
 
 def read_csv_action(file):
-    for i in range(0, list(pd.read_csv(file)._values).__len__()):
-        det = pd.read_csv(file)._values[i][0].split(';')
-        name = det[0]
-        host = det[1]
-        server = det[2]
-        port = det[3]
-        user = det[4]
-        password = det[5]
-        save_distinct(host, name, password, port, server, user)
+    try :
 
+        for i in range(0, list(pd.read_csv(file)._values).__len__()):
+            det = pd.read_csv(file)._values[i][0].split(';')
+            name = det[0]
+            host = det[1]
+            server = det[2]
+            port = det[3]
+            user = det[4]
+            password = det[5]
+            save_distinct(host, name, password, port, server, user)
+    except IndexError:
+        pass
 
 def save_distinct(host, name, password, port, server, user):
     if not SqlDataAuth.objects.filter(name__iexact=name):
