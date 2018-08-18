@@ -1,3 +1,16 @@
-name,host,server,port,user,password
-golestan_db,172.16.0.111,G2017,1070,ZabbixUser,ForGozare$hZx2018
-eoffice_db,172.16.16.103,'',1433,ZabbixUser,ForGozare$hZx2018
+vm_name;IP;Server Name(sql);port;user;pass
+golestan_db(111.111);192.168.111.111;G2017;1070;ZabbixUser;ForGozare$hZx2018
+eoffice_db(112.103);192.168.112.103;;1433;ZabbixUser;ForGozare$hZx2018
+PMS_db(112.178);192.168.112.178;SQL2012FINAL;50020;ZabbixUser;ForGozare$hZx2018
+archive(112.1115);192.168.112.115;SQL2014;49563;ZabbixUser;ForGozare$hZx2018
+ccis_new(0.38);194.225.0.38;TRAFFIC;49779;ZabbixUser;ForGozare$hZx2018
+resclinic(112.143);192.168.112.143;;1433;ZabbixUser;ForGozare$hZx2018
+plesk_windows_new (0.214);194.225.0.214;"MSSQLSERVER2012
+MSSQLSERVER2014";"1433
+1432";ZabbixUser;ForGozare$hZx2018
+cardIssue(0.47);194.225.0.47;CARDISSUEMANAGER;50050  or 1433;ZabbixUser;ForGozare$hZx2018
+person(0.221);194.225.0.221;;1433;ZabbixUser;ForGozare$hZx2018
+payment(0.220);194.225.0.220;;1433;ZabbixUser;ForGozare$hZx2018
+bpms_restored(111.77);192.168.111.77;BPMS;;ZabbixUser;ForGozare$hZx2018
+Disciplinary_Committee_eoffice (112.215);192.168.112.215;;1433;ZabbixUser;ForGozare$hZx2018
+accrual_acc_db(112.169);192.168.112.169;;5050;ZabbixUser;ForGozare$hZx2018
