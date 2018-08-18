@@ -78,16 +78,18 @@ def time_sync(host, i):
 def anydesk(host, i):
     if i['name'].lower().find('all program files x86') == 0:
         any_desk = i['lastvalue'].split('AnyDesk')
+
         if len(any_desk) >= 2:
-            host.anydesk = "1"
+            host.anydesk = "ON"
         else:
-            host.anydesk = "0"
+            host.anydesk = "OFF"
+
     if i['name'].lower().find('all process') == 0:
         any_desk = i['lastvalue'].split('AnyDesk')
         if len(any_desk) >= 2:
-            host.anydesk = "1"
+            host.anydesk = "OFF"
         else:
-            host.anydesk = "0"
+            host.anydesk = "ON"
 
 
 def software_version(host, i):
@@ -106,17 +108,16 @@ def win_xpr_date(host, i):
 
 def free_disk_g(host, i):
     if i['name'].lower().find('free disk space logical g:') == 0:
-        host.freediskg = i['lastvalue']
-
+        host.freediskg = i['lastvalue']+'%'
 
 def free_disk_h(host, i):
     if i['name'].lower().find('free disk space logical h:') == 0:
-        host.freediskh = i['lastvalue']
+        host.freediskh = i['lastvalue']+'%'
 
 
 def free_disk_i(host, i):
     if i['name'].lower().find('free disk space logical i:') == 0:
-        host.freediski = i['lastvalue']
+        host.freediski = i['lastvalue']+'%'
 
 
 def file_sharing_ports(host, i):
@@ -156,27 +157,31 @@ def open_ports(host, i):
 
 def free_disk_f(host, i):
     if i['name'].lower().find('free disk space logical f:') == 0:
-        host.freediskf = i['lastvalue']
+        host.freediskf = i['lastvalue']+'%'
 
 
 def free_disk_e(host, i):
     if i['name'].lower().find('free disk space logical e:') == 0:
-        host.freediske = i['lastvalue']
+        host.freediske = i['lastvalue']+'%'
 
 
 def free_disk_d(host, i):
     if i['name'].lower().find('free disk space logical d:') == 0:
-        host.freediskd = i['lastvalue']
+        host.freediskd = i['lastvalue']+'%'
 
 
 def free_disk_c(host, i):
     if i['name'].lower().find('free disk space logical c:') == 0:
-        host.freediskc = i['lastvalue']
+        host.freediskc = i['lastvalue']+'%'
 
 
 def telnet(host, i):
     if i['name'].lower().find('telnet service') == 0:
-        host.telnet = i['lastvalue']
+        if i['lastvalue']=='0':
+            host.telnet = 'OFF'
+        else:
+            host.telnet = 'ON'
+
 
 
 def mcafee(host, i):
@@ -193,4 +198,5 @@ def login():
 class Command(BaseCommand):
     def handle(self, **options):
         get_items()
+
 
