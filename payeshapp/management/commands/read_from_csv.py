@@ -8,7 +8,7 @@ def read_from_csv():
 
 
 def where_file():
-    file = '/home/payesh/payesh/sql_data.csv'
+    file = '../zabbix_user_list.csv'
     xl = pd.read_csv(file)
     read_csv_action(file)
 
@@ -16,12 +16,13 @@ def where_file():
 def read_csv_action(file):
     i = 0
     for i in range(list(pd.read_csv(file)._values).__len__()):
-        name = list(pd.read_csv(file)._values[i])[0]
-        host = list(pd.read_csv(file)._values[i])[1]
-        server = list(pd.read_csv(file)._values[i])[2]
-        port = list(pd.read_csv(file)._values[i])[3]
-        user = list(pd.read_csv(file)._values[i])[4]
-        password = list(pd.read_csv(file)._values[i])[5]
+        det = pd.read_csv(file)._values[i][0].split(';')
+        name = det[0]
+        host = det[1]
+        server = det[2]
+        port = det[3]
+        user = det[4]
+        password = det[5]
         save_distinct(host, name, password, port, server, user)
 
 
