@@ -8,14 +8,13 @@ def read_from_csv():
 
 
 def where_file():
-    file = '../zabbix_user_list.csv'
+    file = '/home/mahsa/PycharmProjects/payesh/payesh/zabbix user list.csv'
     xl = pd.read_csv(file)
     read_csv_action(file)
 
 
 def read_csv_action(file):
-    i = 0
-    for i in range(list(pd.read_csv(file)._values).__len__()):
+    for i in range(0, list(pd.read_csv(file)._values).__len__()):
         det = pd.read_csv(file)._values[i][0].split(';')
         name = det[0]
         host = det[1]
