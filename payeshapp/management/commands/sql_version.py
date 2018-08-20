@@ -4,7 +4,7 @@ import pymssql
 
 
 def sql_version():
-    for sql_data_auth in SqlDataAuth.objects.filter(name__isnull=False).all():
+    for sql_data_auth in SqlDataAuth.objects.filter(host__isnull=False).all():
 
         obj = Server.objects.get(ip=sql_data_auth.host)
         try:

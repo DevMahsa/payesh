@@ -17,7 +17,8 @@ def read_csv_action(file):
     try :
 
         for i in range(0, list(pd.read_csv(file)._values).__len__()):
-            det = pd.read_csv(file)._values[i][0].split(';')
+            #det = pd.read_csv(file)._values[i][0].split(';')
+            det = pd.read_csv(file)._values[i]
             name = det[0]
             host = det[1]
             server = det[2]

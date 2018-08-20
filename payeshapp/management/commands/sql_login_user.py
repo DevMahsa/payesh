@@ -4,7 +4,7 @@ import pymssql
 
 
 def sql_login_user():
-    for sql_data_auth in SqlDataAuth.objects.filter(name__isnull=False).all():
+    for sql_data_auth in SqlDataAuth.objects.filter(host__isnull=False).all():
         obj = Server.objects.get(ip=sql_data_auth.host)
         try:
             connection = pymssql.connect(host=sql_data_auth.host, server=sql_data_auth.server, port=sql_data_auth.port,
