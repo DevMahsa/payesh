@@ -10,42 +10,42 @@ from .models import Server, LastMemory, LastCpu
 @admin.register(Server)
 class ServerModelAdmin(admin.ModelAdmin):
     actions = ["export_as_csv", "export_users_xls"]
-    list_display = \
-    ('hostid',
-    'name',
-    'ip',
-    'date',
-    'new_system_event',
-    'new_app_event',
-    'eventlog_max_size',
-    'backup_name',
-    'freediskc',
-    'freediskd',
-    'freediske',
-    'freediskf',
-    'freediskg',
-    'freediskh',
-    'freediski',
-    'maxusedmemory',
-    'maxusedcpu',
-    'time_win_sync',
-    'sql_file_size',
-    'sql_login_user',
-    'sql_xp_cmdshell',
-    'microsoft_update',
-    'windows_version',
-    'sql_version' ,
-    'firewall' ,
-    'open_port',
-    'mcafee',
-    'anydesk',
-    'smb1_config',
-    'file_sharing_port' ,
-    'telnet',
-    'ssl_cert_exp',
-    'local_user' ,
-    'win_active' ,
-)
+#     list_display = \
+#     ('hostid',
+#     'name',
+#     'ip',
+#     'date',
+#     'new_system_event',
+#     'new_app_event',
+#     'eventlog_max_size',
+#     'backup_name',
+#     'freediskc',
+#     'freediskd',
+#     'freediske',
+#     'freediskf',
+#     'freediskg',
+#     'freediskh',
+#     'freediski',
+#     'maxusedmemory',
+#     'maxusedcpu',
+#     'time_win_sync',
+#     'sql_file_size',
+#     'sql_login_user',
+#     'sql_xp_cmdshell',
+#     'microsoft_update',
+#     'windows_version',
+#     'sql_version' ,
+#     'firewall' ,
+#     'open_port',
+#     'mcafee',
+#     'anydesk',
+#     'smb1_config',
+#     'file_sharing_port' ,
+#     'telnet',
+#     'ssl_cert_exp',
+#     'local_user' ,
+#     'win_active' ,
+# )
     search_fields = ('name','ip')
 
     def export_as_csv(self, request, queryset):
@@ -89,7 +89,8 @@ class ServerModelAdmin(admin.ModelAdmin):
         font_style = xlwt.XFStyle()
         font_style.font.bold = True
 
-        columns = self.model._meta
+        #columns = self.model._meta
+        columns = self.list_display
 
         for col_num in range(len(columns)):
             ws.write(row_num, col_num, columns[col_num], font_style)
