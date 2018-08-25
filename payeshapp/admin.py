@@ -89,7 +89,7 @@ class ServerModelAdmin(admin.ModelAdmin):
         font_style = xlwt.XFStyle()
         font_style.font.bold = True
 
-        columns = self.list_display
+        columns = self.model._meta
 
         for col_num in range(len(columns)):
             ws.write(row_num, col_num, columns[col_num], font_style)
