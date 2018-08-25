@@ -11,7 +11,7 @@ from .models import Server, LastMemory, LastCpu
 class ServerModelAdmin(admin.ModelAdmin):
     actions = ["export_as_csv", "export_users_xls"]
     list_display = \
-    ('hostid'
+    ('hostid',
     'name',
     'ip',
     'date',
