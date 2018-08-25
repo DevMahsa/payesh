@@ -6,13 +6,14 @@ import pymssql
 def sql_login_user():
     for sql_data_auth in SqlDataAuth.objects.filter(host__isnull=False).all():
         obj = Server.objects.get(ip=sql_data_auth.host)
+        #obj = '192.168.112.219'
         try:
             connection = pymssql.connect(host=sql_data_auth.host, server=sql_data_auth.server, port=sql_data_auth.port,
                                          user=sql_data_auth.user,
                                          password=sql_data_auth.password)
 
             cursor = connection.cursor()
-            cursor.execute("select * from sys.sql_logins where is_disabled =0")
+            cursor.execute("select * from sys.sql_logins where is_disabled=1")
                     # cursor.execute(
                     #    "SELECT CONVERT(INT, ISNULL(value, value_in_use)) AS config_value FROM sys.configurations WHERE name = N'xp_cmdshell' ;")
             result = cursor.fetchall()

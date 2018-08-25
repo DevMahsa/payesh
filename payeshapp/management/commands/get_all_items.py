@@ -186,7 +186,10 @@ def telnet(host, i):
 
 def mcafee(host, i):
     if i['name'].lower().find('mcafee task manager') == 0:
-        host.mcafee = i['lastvalue']
+        if i['lastvalue'] == '0':
+            host.mcafee = 'ON'
+        else:
+            host.mcafee = 'OFF'
 
 
 def login():
