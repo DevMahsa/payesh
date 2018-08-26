@@ -13,7 +13,7 @@ def sql_login_user():
                                          password=sql_data_auth.password)
 
             cursor = connection.cursor()
-            cursor.execute("select * from sys.sql_logins where is_disabled=1")
+            cursor.execute("select * from sys.sql_logins where is_disabled=0")
                     # cursor.execute(
                     #    "SELECT CONVERT(INT, ISNULL(value, value_in_use)) AS config_value FROM sys.configurations WHERE name = N'xp_cmdshell' ;")
             result = cursor.fetchall()

@@ -21,7 +21,7 @@ class Server(models.Model):
     maxusedcpu = models.CharField(max_length=500, null=True)
     time_win_sync = models.CharField(max_length=500 ,null= True)
     sql_file_size = models.TextField (null= True)
-    sql_login_user = models.CharField(max_length=500, null=True)
+    sql_login_user = models.TextField(null=True)
     sql_xp_cmdshell = models.CharField(max_length=500, null=True)
     microsoft_update = models.CharField(max_length=500 ,null= True)
     windows_version = models.CharField(max_length=500 , null= True)
