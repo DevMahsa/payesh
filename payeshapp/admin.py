@@ -74,7 +74,7 @@ class ServerModelAdmin(admin.ModelAdmin):
                 row.append(getattr(obj, field))
             writer.writerow(row)
 
-    export_as_csv.short_description = "Export Selected"
+    export_as_csv.short_description = "Export as .csv"
 
     def export_users_xls(self, request, queryset):
         response = HttpResponse(content_type='application/ms-excel')
@@ -90,7 +90,58 @@ class ServerModelAdmin(admin.ModelAdmin):
         font_style.font.bold = True
 
         #columns = self.model._meta
-        columns = self.list_display
+        columns = \
+    ['id',
+        'hostid',
+    'name',
+    'ip',
+    'date',
+    'new_system_event',
+    'new_app_event',
+    'eventlog_max_size',
+    'backup_name',
+    'freediskc',
+    'freediskd',
+    'freediske',
+    'freediskf',
+    'freediskg',
+    'freediskh',
+    'freediski',
+    'maxusedmemory',
+    'maxusedcpu',
+    'time_win_sync',
+    'sql_file_size',
+    'sql_login_user',
+    'sql_xp_cmdshell',
+    'microsoft_update',
+    'windows_version',
+    'sql_version' ,
+    'firewall' ,
+    'open_port',
+    'mcafee',
+    'anydesk',
+    'smb1_config',
+    'file_sharing_port' ,
+    'telnet',
+    'ssl_cert_exp',
+    'local_user' ,
+    'win_active'
+
+]
+        # meta = self.model._meta
+        # field_names = [field.name for field in meta.fields]
+        # for field in field_names:
+        #     row = [field]
+        #     for obj in queryset:
+        #         row.append(getattr(obj, field))
+        #     ws.write(int(row[1]), str(row[0]))
+
+        # for field in columns:
+        #     row = [field]
+        #     for obj in queryset:
+        #         row.append(getattr(obj,field))
+        #         ws.write(field, row)
+
 
         for col_num in range(len(columns)):
             ws.write(row_num, col_num, columns[col_num], font_style)
