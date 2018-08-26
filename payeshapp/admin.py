@@ -82,6 +82,7 @@ class ServerModelAdmin(admin.ModelAdmin):
 
         wb = xlwt.Workbook(encoding='utf-8')
         ws = wb.add_sheet(str(queryset[0]))
+        #text_format = wb.add_style({'rotation': 270})
 
         # Sheet header, first row
         row_num = 0
@@ -157,7 +158,7 @@ class ServerModelAdmin(admin.ModelAdmin):
 
         wb.save(response)
         return response
-
+    export_users_xls.short_description = "Export as .xls"
 
 @admin.register(LastMemory)
 class LastMemoryModelAdmin(admin.ModelAdmin):
