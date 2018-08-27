@@ -130,15 +130,8 @@ def file_sharing_ports(host, i):
                 host.file_sharing_port = i['lastvalue']
             else:
                 newlist = i['lastvalue'].split(' ')
-                def filtered(newlist):
-                    fil = ['0.0.0.0', 'TCP', 'UDP', 'LISTENING', '\r\n', host.ip, '*:*']
-                    if (newlist in fil):
-                        return False
-                    else:
-                        return True
-                filt = filter(filtered, newlist)
-                for i in filt:
-                    host.file_sharing_port += i +'\n'
+                fil = ['0.0.0.0:0', 'TCP', 'UDP', 'LISTENING\r\n', '\r\n', host.ip, '*:*', "", '[::]:0', '0.0.0.0:', '[::]:', host.ip+':']
+                host.file_sharing_port=list(filter(lambda x: x not in fil, newlist))
 
 
 
