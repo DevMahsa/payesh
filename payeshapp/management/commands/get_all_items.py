@@ -130,6 +130,7 @@ def file_sharing_ports(host, i):
                 host.file_sharing_port = i['lastvalue']
             else:
                 newlist=i['lastvalue'].split(' ')
+                del(host.file_sharing_port)
                 for i in newlist:
                     ip=host.ip
                     if not i=='':
