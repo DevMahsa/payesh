@@ -122,6 +122,8 @@ def free_disk_i(host, i):
 
 
 def file_sharing_ports(host, i):
+    f=Server.objects.filter(file_sharing_port__isnull=False).all()
+    f.delete()
     if i['name'].lower().find('file sharing port') == 0:
         if i['lastvalue'].split('filesharing').__len__() >=2:
             host.file_sharing_port = "No Script Available"
