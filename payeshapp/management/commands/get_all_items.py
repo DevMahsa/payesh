@@ -133,7 +133,10 @@ def app_event(host, i):
         if i['lastvalue'].split('appevent').__len__() >= 2:
             host.new_app_event = "No Script Available"
         else:
-            host.new_app_event = i['lastvalue']
+            if i['lastvalue']=='0':
+                host.new_app_event = i['lastvalue']
+            else:
+                host.new_app_event ='MachineName: '+i['lastvalue'].split('MachineName')[1].split('\r')[0].split(':')[1] +'\n'+'EventID: '+i['lastvalue'].split('EventID')[1].split('\r')[0].split(':')[1]+'\n'+'Time'+i['lastvalue'].split('Time')[1].split('\r')[0]+'\n'+'Time'+i['lastvalue'].split('Time')[2].split('\r')[0]
 
 
 def sys_event(host, i):
@@ -141,7 +144,12 @@ def sys_event(host, i):
         if i['lastvalue'].split('sysevent').__len__() >= 2:
             host.new_system_event = "No Script Available"
         else:
-            host.new_system_event = i['lastvalue']
+            if i['lastvalue']=='0':
+                host.new_system_event = i['lastvalue']
+            else:
+                host.new_system_event ='MachineName: '+i['lastvalue'].split('MachineName')[1].split('\r')[0].split(':')[1] +'\n'+'EventID: '+i['lastvalue'].split('EventID')[1].split('\r')[0].split(':')[1]+'\n'+'Time'+i['lastvalue'].split('Time')[1].split('\r')[0]+'\n'+'Time'+i['lastvalue'].split('Time')[2].split('\r')[0]
+
+
 
 
 def event_log_max_size(host, i):
