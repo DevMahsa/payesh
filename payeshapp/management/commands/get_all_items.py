@@ -2,6 +2,7 @@ from  datetime import datetime
 from django.core.management.base import BaseCommand
 from pyzabbix import ZabbixAPI
 from payeshapp.models import Server
+from django.db.models import Q
 
 def get_items():
 
@@ -125,7 +126,25 @@ def file_sharing_ports(host, i):
         if i['lastvalue'].split('filesharing').__len__() >=2:
             host.file_sharing_port = "No Script Available"
         else:
-            host.file_sharing_port = i['lastvalue']
+            if i['lastvalue']=='0':
+                host.file_sharing_port = i['lastvalue']
+            else:
+                newlist=i['lastvalue'].split(' ')
+                for i in newlist:
+                    ip=host.ip
+                    if not i=='':
+                        if not len(i.split('TCP'))>=2:
+                            if not len(i.split('UDP'))>=2:
+                                if not len(i.split(ip))>=2:
+                                    if not len(i.split('0.0.0.0'))>=2:
+                                        if not len(i.split('[::]:'))>=2:
+                                            if not len(i.split('*:*'))>=2:
+                                                if not len(i.split('LISTENING'))>=2:
+                                                    if not len(i.split('\r'))>=2:
+                                                        host.file_sharing_port +='\n'+ i +'\n'
+
+
+
 
 
 def app_event(host, i):
