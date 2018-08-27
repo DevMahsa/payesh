@@ -123,7 +123,7 @@ def free_disk_i(host, i):
 def file_sharing_ports(host, i):
     if i['name'].lower().find('file sharing port') == 0:
         if i['lastvalue'].split('filesharing').__len__() >=2:
-            host.sql_file_port = 'No Script Available'
+            host.file_sharing_port = "No Script Available"
         else:
             host.file_sharing_port = i['lastvalue']
 
@@ -131,7 +131,7 @@ def file_sharing_ports(host, i):
 def app_event(host, i):
     if i['name'].lower().find('app event') == 0:
         if i['lastvalue'].split('appevent').__len__() >= 2:
-            host.sql_file_port = 'No Script Available'
+            host.new_app_event = "No Script Available"
         else:
             host.new_app_event = i['lastvalue']
 
@@ -139,7 +139,7 @@ def app_event(host, i):
 def sys_event(host, i):
     if i['name'].lower().find('sys event') == 0:
         if i['lastvalue'].split('sysevent').__len__() >= 2:
-            host.sql_file_port = 'No Script Available'
+            host.new_system_event = "No Script Available"
         else:
             host.new_system_event = i['lastvalue']
 
@@ -152,7 +152,7 @@ def event_log_max_size(host, i):
 def local_users(host, i):
     if i['name'].lower().find('local users') == 0:
         if i['lastvalue'].split('localuser').__len__() >= 2:
-            host.sql_file_port = 'No Script Available'
+            host.local_user = "No Script Available"
         else:
             host.local_user = i['lastvalue']
 
