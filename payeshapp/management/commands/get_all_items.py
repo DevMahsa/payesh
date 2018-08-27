@@ -132,7 +132,8 @@ def app_event(host, i):
     if i['name'].lower().find('app event') == 0:
         if i['lastvalue'].split('appevent').__len__() >= 2:
             host.sql_file_port = 'No Script Available'
-        host.new_app_event = i['lastvalue']
+        else:
+            host.new_app_event = i['lastvalue']
 
 
 def sys_event(host, i):
