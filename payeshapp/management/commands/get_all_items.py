@@ -197,8 +197,8 @@ def open_ports(host, i):
                         temp3=temp2
                         if not len(temp3.split('Block'))>=2:
                             temp = temp3
-                            host.open_port += 'RuleName: '+ temp + '\n'
-
+                            #host.open_port += 'RuleName: '+ temp + '\n'
+                            host.open_port=''
 
 
 
