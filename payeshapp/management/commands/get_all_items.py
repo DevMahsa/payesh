@@ -172,8 +172,13 @@ def local_users(host, i):
         if i['lastvalue'].split('localuser').__len__() >= 2:
             host.local_user = "No Script Available"
         else:
-            host.local_user = i['lastvalue']
-
+            if i['lastvalue'] == '0':
+                host.local_user = i['lastvalue']
+            else:
+                temp= i['lastvalue'].split('Name')
+                for j in range(len(temp)):
+                    if len(temp[j].split('OK'))>=2:
+                        host.local_user += 'Name: ' +temp[j] + '\n'
 
 def microsoft_update(host, i):
     if i['name'].lower().find('microsoft update') == 0:
