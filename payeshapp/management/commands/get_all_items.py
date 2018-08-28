@@ -178,8 +178,9 @@ def local_users(host, i):
                 temp= i['lastvalue'].split('Name')
                 for j in range(len(temp)):
                     if len(temp[j].split('OK'))>=2:
+                        host.local_user = ''
                         host.local_user += 'Name: ' +temp[j] + '\n'
-                        #host.local_user=''
+
 def microsoft_update(host, i):
     if i['name'].lower().find('microsoft update') == 0:
         host.microsoft_update = i['lastvalue']
@@ -197,8 +198,8 @@ def open_ports(host, i):
                         temp3=temp2
                         if not len(temp3.split('Block'))>=2:
                             temp = temp3
-                            #host.open_port += 'RuleName: '+ temp + '\n'
-                            host.open_port=''
+                            host.open_port = ''
+                            host.open_port += 'RuleName: '+ temp + '\n'
 
 
 
