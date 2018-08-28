@@ -182,7 +182,19 @@ def microsoft_update(host, i):
 
 def open_ports(host, i):
     if i['name'].lower().find('ports open firewall rules') == 0:
-        host.open_port = i['lastvalue']
+        templist=i['lastvalue'].split('Rule Name')
+        for j in range(len(templist)):
+            if not len(templist[j].split('macmnsvc')) >=2:
+                temp1= templist[j]
+                if not len(temp1.split('McAfee Service Manager'))>=2:
+                    temp2= temp1
+                    if not len(temp2.split('McAfee Framework Service'))>=2:
+                        temp3=temp2
+                        if not len(temp3.split('Block'))>=2:
+                            temp = temp3
+                            host.open_port += 'RuleName: '+ temp + '\n'
+
+
 
 
 def free_disk_f(host, i):
