@@ -93,6 +93,7 @@ def anydesk(host, i):
             host.anydesk = "ON"
 
 
+
 def software_version(host, i):
     try:
         if i['name'].lower().find('software version') == 0:
@@ -177,11 +178,8 @@ def local_users(host, i):
             else:
                 host.local_user = ''
                 temp= i['lastvalue'].split('Name')
-
-
                 for j in range(len(temp)):
                     if len(temp[j].split('OK'))>=2:
-
                         host.local_user += 'Name: ' +temp[j] + '\n'
 
 def microsoft_update(host, i):
@@ -229,8 +227,8 @@ def free_disk_c(host, i):
 
 
 def telnet(host, i):
-    if i['name'].lower().find('telnet service') == 0:
-        if i['lastvalue']=='0':
+    if i['name'].lower().find('telnet_client') == 0:
+        if i['lastvalue'].split('Installed').__len__() <2 :
             host.telnet = 'OFF'
         else:
             host.telnet = 'ON'
