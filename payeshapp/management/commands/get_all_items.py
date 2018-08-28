@@ -168,7 +168,6 @@ def event_log_max_size(host, i):
 
 
 def local_users(host, i):
-    host.local_user = ''
     if i['name'].lower().find('local users') == 0:
         if i['lastvalue'].split('localuser').__len__() >= 2:
             host.local_user = "No Script Available"
@@ -177,6 +176,8 @@ def local_users(host, i):
                 host.local_user = i['lastvalue']
             else:
                 temp= i['lastvalue'].split('Name')
+
+                host.local_user = ''
                 for j in range(len(temp)):
                     if len(temp[j].split('OK'))>=2:
 
@@ -188,9 +189,10 @@ def microsoft_update(host, i):
 
 
 def open_ports(host, i):
-    host.open_port = ''
+
     if i['name'].lower().find('ports open firewall rules') == 0:
         templist=i['lastvalue'].split('Rule Name')
+        host.open_port = ''
         for j in range(len(templist)):
             if not len(templist[j].split('macmnsvc')) >=2:
                 temp1= templist[j]
