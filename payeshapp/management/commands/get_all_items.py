@@ -175,9 +175,10 @@ def local_users(host, i):
             if i['lastvalue'] == '0':
                 host.local_user = i['lastvalue']
             else:
+                host.local_user = ''
                 temp= i['lastvalue'].split('Name')
 
-                host.local_user = ''
+
                 for j in range(len(temp)):
                     if len(temp[j].split('OK'))>=2:
 
