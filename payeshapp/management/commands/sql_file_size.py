@@ -26,7 +26,11 @@ def sql_file_size():
             #cursor.execute("EXEC sp_helpdb @dbname='msdb';")
             result = cursor.fetchall()
             for i in range(len(result)):
-                obj.sql_file_size +=str(result[i][0])+' : '+str(float(result[i][1])+float(result[i][2]))+'\n'
+                if not str(result[i][0])=='master':
+                    if not str(result[i][0])=='tempdb':
+                        if not str(result[i][0])=='model':
+                            if not str(result[i][0])=='msdb':
+                                obj.sql_file_size +=str(result[i][0])+' : '+str(float(result[i][1])+float(result[i][2]))+'\n'
             obj.save()
         except pymssql.OperationalError:
             pass
