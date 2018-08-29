@@ -81,3 +81,23 @@ class SslData(models.Model):
         return self.addr
 
 # Create your models here.
+
+
+
+class LinuxServer(models.Model):
+    hostid = models.CharField(max_length=500, null=True)
+    name = models.CharField(max_length=500)
+    ip=models.CharField(max_length=50,null=True)
+    date = models.DateField(blank=True, null=True)
+    maxusedmemory = models.CharField(max_length=500, null=True)
+    maxusedcpu = models.CharField(max_length=500, null=True)
+    time_sync = models.CharField(max_length=500 ,null= True)
+    open_port = models.TextField( null= True)
+    firewall = models.CharField(max_length=500, null=True)
+    telnet = models.CharField(max_length=500, null=True)
+    ssl_cert_exp = models.CharField(max_length=500, null=True)
+    local_user = models.TextField( null= True)
+
+
+    def __str__(self):
+        return self.name
