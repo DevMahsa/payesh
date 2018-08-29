@@ -1,6 +1,6 @@
 from django.core.management.base import BaseCommand
 from pyzabbix import ZabbixAPI
-from payeshapp.models import Server
+from payeshapp.models import WindowsServer
 
 
 def update():
@@ -18,10 +18,10 @@ def select_host(zapi):
 
 def save_host(length, query):
     for count in range(length):
-        if Server.objects.filter(name=query[count]['name']).exists():
+        if WindowsServer.objects.filter(name=query[count]['name']).exists():
             count += 1
             continue
-        get = Server(name=query[count]['name'])
+        get = WindowsServer(name=query[count]['name'])
         get.ip = query[count]['interfaces'][0]['ip']
         get.name = query[count]['name']
         get.hostid = query[count]['hostid']
@@ -30,7 +30,7 @@ def save_host(length, query):
 
 def login():
     zapi = ZabbixAPI("http://192.168.112.157:4720")
-    zapi.login("riri", "rayta")
+    zapi.login("ririwindows", "ririwindows")
     return zapi
 
 

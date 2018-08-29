@@ -1,11 +1,11 @@
 from django.core.management.base import BaseCommand
-from payeshapp.models import Server, SqlDataAuth
+from payeshapp.models import WindowsServer, SqlDataAuth
 import pymssql
 
 
 def sql_login_user():
     for sql_data_auth in SqlDataAuth.objects.filter(host__isnull=False).all():
-        obj = Server.objects.get(ip=sql_data_auth.host)
+        obj = WindowsServer.objects.get(ip=sql_data_auth.host)
         #obj = '192.168.112.219'
         try:
             connection = pymssql.connect(host=sql_data_auth.host, server=sql_data_auth.server, port=sql_data_auth.port,

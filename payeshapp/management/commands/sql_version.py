@@ -1,12 +1,12 @@
 from django.core.management.base import BaseCommand
-from payeshapp.models import Server, SqlDataAuth
+from payeshapp.models import WindowsServer, SqlDataAuth
 import pymssql
 
 
 def sql_version():
     for sql_data_auth in SqlDataAuth.objects.filter(host__isnull=False).all():
 
-        obj = Server.objects.get(ip=sql_data_auth.host)
+        obj = WindowsServer.objects.get(ip=sql_data_auth.host)
         try:
             connection = pymssql.connect(host=sql_data_auth.host, server=sql_data_auth.host, port=sql_data_auth.port,
                                          user=sql_data_auth.user,

@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Server(models.Model):
+class WindowsServer(models.Model):
     hostid = models.CharField(max_length=500, null=True)
     name = models.CharField(max_length=500)
     ip=models.CharField(max_length=50,null=True)
@@ -48,7 +48,7 @@ class Server(models.Model):
 class LastMemory(models.Model):
     memory = models.CharField(max_length=500)
     date = models.CharField(max_length=500)
-    server = models.ForeignKey(Server, related_name='memory',on_delete=models.DO_NOTHING)
+    server = models.ForeignKey(WindowsServer, related_name='memory',on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.server.name
@@ -57,7 +57,7 @@ class LastMemory(models.Model):
 class LastCpu(models.Model):
     cpu = models.CharField(max_length=500)
     date = models.CharField(max_length=500)
-    server = models.ForeignKey(Server, related_name='cpu',on_delete=models.DO_NOTHING)
+    server = models.ForeignKey(WindowsServer, related_name='cpu',on_delete=models.DO_NOTHING)
 
     def __str__(self):
         return self.server.name

@@ -1,12 +1,12 @@
 from django.core.management.base import BaseCommand
-from payeshapp.models import Server, SslData
+from payeshapp.models import WindowsServer, SslData
 import OpenSSL
 import ssl
 
 
 def ssl_cert_exp():
     for ssl_data in SslData.objects.filter(hostip__isnull=False):
-        obj = Server.objects.get(ip=ssl_data.hostip)
+        obj = WindowsServer.objects.get(ip=ssl_data.hostip)
         x509 = chack_ssl_cert(ssl_data)
         day, month, year = extract_day(x509)
         # dt = datetime(int(year), int(month), int(day))

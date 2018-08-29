@@ -1,7 +1,7 @@
 from  datetime import datetime
 from django.core.management.base import BaseCommand
 from pyzabbix import ZabbixAPI
-from payeshapp.models import Server
+from payeshapp.models import WindowsServer
 from django.db.models import Q
 
 def get_items():
@@ -9,8 +9,9 @@ def get_items():
     zapi = login()
 
     for h in zapi.host.get(output="extend"):
+        #zapi.host.get(output="extend", groupids="81")
 
-        for host in Server.objects.filter(name=h['name']):
+        for host in WindowsServer.objects.filter(name=h['name']):
             # curr=Server.objects.filter(name=h['name'])
             # nameserver = curr.get(name__contains=h['name']).name.encode('utf-8') ==host.name
             for i in zapi.item.get(filter={'host': host.name}):
@@ -49,6 +50,18 @@ def firewall_status(host, i):
     try:
         if i['name'].lower().find('firewall status') == 0:
             firewall = i['lastvalue'].split('EnableFirewall')[1].split('REG_DWORD')[1].split('0x1')
+            if len(firewall) >= 2:
+                host.firewall = "ON"
+            else:
+                host.firewall = "OFF"
+        elif i['name'].lower().find('firewall status deb based') ==0:
+            firewall = i['lastvalue'].split('active')
+            if len(firewall) >= 2:
+                host.firewall = "ON"
+            else:
+                host.firewall = "OFF"
+        elif i['name'].lower().find('firewall status rpm based') ==0:
+            firewall = i['lastvalue'].split('active')
             if len(firewall) >= 2:
                 host.firewall = "ON"
             else:
@@ -250,7 +263,7 @@ def mcafee(host, i):
 
 def login():
     zapi = ZabbixAPI("http://192.168.112.157:4720")
-    zapi.login("riri", "rayta")
+    zapi.login("ririwindows", "ririwindows")
     return zapi
 
 

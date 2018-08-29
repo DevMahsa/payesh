@@ -1,7 +1,7 @@
 from  datetime import datetime
 from django.core.management.base import BaseCommand
 from pyzabbix import ZabbixAPI
-from payeshapp.models import Server, LastCpu, LastMemory
+from payeshapp.models import WindowsServer, LastCpu, LastMemory
 
 
 def export():
@@ -11,7 +11,7 @@ def export():
 
 def select_host(zapi):
     for h in zapi.host.get(output="extend"):
-        for host in Server.objects.filter(name=h['name']):
+        for host in WindowsServer.objects.filter(name=h['name']):
             for i in zapi.item.get(filter={'host': host.name}):
                 cpu_usage(host, i)
                 memory_usage(host, i)

@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from django.db.models import Max
 from pyzabbix import ZabbixAPI
 
-from payeshapp.models import Server, LastMemory, LastCpu
+from payeshapp.models import WindowsServer, LastMemory, LastCpu
 
 
 def max():
@@ -12,7 +12,7 @@ def max():
 
 def select_save(zapi):
     for h in zapi.host.get(output="extend"):
-        for host in Server.objects.filter(name=h['name']):
+        for host in WindowsServer.objects.filter(name=h['name']):
             max_cpu(host)
             max_memory(host)
             host.save()

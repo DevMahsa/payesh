@@ -4,10 +4,10 @@ from datetime import datetime
 import xlwt
 from django.contrib import admin
 from django.http import HttpResponse
-from .models import Server, LastMemory, LastCpu
+from .models import WindowsServer, LastMemory, LastCpu
 
 
-@admin.register(Server)
+@admin.register(WindowsServer)
 class ServerModelAdmin(admin.ModelAdmin):
     actions = ["export_as_csv", "export_users_xls"]
 #     list_display = \
