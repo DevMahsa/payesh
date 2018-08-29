@@ -74,7 +74,12 @@ def time_sync(host, i):
             host.time_win_sync = "YES"
         else:
             host.time_win_sync = "NO"
-
+    elif i['name'].lower().find('is time sync')==0:
+        time = i['lastvalue'].split('192.168.20.23')
+        if len(time) >= 2:
+            host.time_win_sync = "YES"
+        else:
+            host.time_win_sync = "NO"
 
 def anydesk(host, i):
     if i['name'].lower().find('all program files x86') == 0:
