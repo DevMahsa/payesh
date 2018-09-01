@@ -34,6 +34,12 @@ def firewall_status(host, i):
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
+        elif i['name'].lower().find('firewall alternative') == 0:
+            firewall = i['lastvalue'].split('active')
+            if len(firewall) >= 2:
+                host.firewall = "ON"
+            else:
+                host.firewall = "OFF"
     except IndexError:
         pass
 
