@@ -25,21 +25,30 @@ def firewall_status(host, i):
         if i['name'].lower().find('firewall status deb based') ==0:
             firewall1 = i['lastvalue'].split('running')
             firewall2 = i['lastvalue'].split('exited')
-            if (len(firewall1) >= 2 or len(firewall2) >= 2):
+            if len(firewall1) >= 2:
+                host.firewall = "ON"
+
+            if len(firewall2) >= 2:
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
         elif i['name'].lower().find('firewall status rpm based') ==0:
             firewall1 = i['lastvalue'].split('running')
             firewall2 = i['lastvalue'].split('exited')
-            if (len(firewall1) >= 2 or len(firewall2) >= 2):
+            if len(firewall1) >= 2:
+                host.firewall = "ON"
+
+            if len(firewall2) >= 2:
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
         elif i['name'].lower().find('firewall alternative') == 0:
             firewall1 = i['lastvalue'].split('running')
             firewall2 = i['lastvalue'].split('exited')
-            if (len(firewall1) >= 2 or len(firewall2) >= 2):
+            if len(firewall1) >= 2 :
+                host.firewall = "ON"
+
+            if  len(firewall2) >= 2:
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
