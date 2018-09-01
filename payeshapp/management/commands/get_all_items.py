@@ -2,7 +2,6 @@ from  datetime import datetime
 from django.core.management.base import BaseCommand
 from pyzabbix import ZabbixAPI
 from payeshapp.models import WindowsServer
-from django.db.models import Q
 
 def get_items():
 

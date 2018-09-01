@@ -1,5 +1,5 @@
-from payeshapp.models import *
-# from django.core.management.base import BaseCommand
+from django.core.management.base import BaseCommand
+from payeshapp.models import WindowsServer, LastCpu, LastMemory
 #
 # class Command(BaseCommand):
 #     def handle(self, **options):
