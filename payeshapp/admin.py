@@ -163,13 +163,13 @@ class ServerModelAdmin(admin.ModelAdmin):
 @admin.register(LastMemory)
 class LastMemoryModelAdmin(admin.ModelAdmin):
     list_display = ('server', 'memory', 'date')
-    search_fields = ('server')
+    search_fields = ('server.name')
 
 
 @admin.register(LastCpu)
 class LastCpuModelAdmin(admin.ModelAdmin):
     list_display = ('server', 'cpu', 'date')
-    search_fields = ('server')
+    search_fields = ('server.name')
 
 
 # Register your models here.
