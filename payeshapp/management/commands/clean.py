@@ -6,8 +6,8 @@ class Command(BaseCommand):
         clean()
 
 def clean():
-    LastCpu.objects.filter(server=WindowsServer.objects.get(name='liferay-new')).all().delete()
-    LastMemory.objects.filter(server=WindowsServer.objects.get(name='liferay-new')).all().delete()
-    WindowsServer.objects.get(name='liferay-new').delete()
+    LastCpu.objects.filter(server=WindowsServer.objects.get(name='splc')).all().delete()
+    LastMemory.objects.filter(server=WindowsServer.objects.get(name='splc')).all().delete()
+    WindowsServer.objects.get(name='splc').delete()
 
 
