@@ -28,7 +28,7 @@ def firewall_status(host, i):
             if len(firewall1) >= 2:
                 host.firewall = "ON"
 
-            if len(firewall2) >= 2:
+            elif len(firewall2) >= 2:
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
@@ -38,7 +38,7 @@ def firewall_status(host, i):
             if len(firewall1) >= 2:
                 host.firewall = "ON"
 
-            if len(firewall2) >= 2:
+            elif len(firewall2) >= 2:
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
@@ -48,7 +48,7 @@ def firewall_status(host, i):
             if len(firewall1) >= 2 :
                 host.firewall = "ON"
 
-            if  len(firewall2) >= 2:
+            elif  len(firewall2) >= 2:
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
