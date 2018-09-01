@@ -2,7 +2,7 @@ from django.core.management.base import BaseCommand
 from django.db.models import Max
 from pyzabbix import ZabbixAPI
 
-from payeshapp.models import LinuxServer, LastMemory, LastCpu
+from payeshapp.models import LinuxServer, LastLinuxCpu, LastLinuxMemory
 
 
 def max():
@@ -19,11 +19,11 @@ def select_save(zapi):
 
 
 def max_cpu(host):
-    host.maxusedcpu = LastCpu.objects.filter(server_id=host.id).aggregate(Max('cpu'))['cpu__max']
+    host.maxusedcpu = LastLinuxCpu.objects.filter(server_id=host.id).aggregate(Max('cpu'))['cpu__max']
 
 
 def max_memory(host):
-    host.maxusedmemory = LastMemory.objects.filter(server_id=host.id).aggregate(Max('memory'))[
+    host.maxusedmemory = LastLinuxMemory.objects.filter(server_id=host.id).aggregate(Max('memory'))[
         'memory__max']
 
 

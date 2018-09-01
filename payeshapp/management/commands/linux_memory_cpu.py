@@ -1,7 +1,7 @@
 from  datetime import datetime
 from django.core.management.base import BaseCommand
 from pyzabbix import ZabbixAPI
-from payeshapp.models import LinuxServer, LastCpu, LastMemory
+from payeshapp.models import LinuxServer, LastLinuxCpu, LastLinuxMemory
 
 
 def export():
@@ -25,13 +25,13 @@ def login():
 
 def memory_usage(host, i):
     if i['name'].lower().find('used memory') == 0:
-        LastMemory.objects.get_or_create(server=host, memory=i['lastvalue'],
+        LastLinuxMemory.objects.get_or_create(server=host, memory=i['lastvalue'],
                                          date=datetime.now())
 
 
 def cpu_usage(host, i):
     if i['name'].lower().find('cpu usage') == 0:
-        LastCpu.objects.get_or_create(server=host, cpu=i['lastvalue'],
+        LastLinuxCpu.objects.get_or_create(server=host, cpu=i['lastvalue'],
                                       date=datetime.now())
 
 
