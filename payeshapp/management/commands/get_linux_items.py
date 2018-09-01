@@ -23,19 +23,19 @@ def get_items():
 def firewall_status(host, i):
     try:
         if i['name'].lower().find('firewall status deb based') ==0:
-            firewall = i['lastvalue'].split('active')
+            firewall = i['lastvalue'].split('exited')
             if len(firewall) >= 2:
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
         elif i['name'].lower().find('firewall status rpm based') ==0:
-            firewall = i['lastvalue'].split('active')
+            firewall = i['lastvalue'].split('exited')
             if len(firewall) >= 2:
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
         elif i['name'].lower().find('firewall alternative') == 0:
-            firewall = i['lastvalue'].split('active')
+            firewall = i['lastvalue'].split('exited')
             if len(firewall) >= 2:
                 host.firewall = "ON"
             else:
