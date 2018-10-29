@@ -28,7 +28,7 @@ def save_host(length, query):
 
 
 def login():
-    zapi = ZabbixAPI("http://192.168.112.157:4720")
+    zapi = ZabbixAPI("http://zmonitor.ut.ac.ir")
     zapi.login("ririlinux", "ririlinux")
     return zapi
 

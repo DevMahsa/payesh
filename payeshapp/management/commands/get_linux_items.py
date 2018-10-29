@@ -63,7 +63,7 @@ def time_sync(host, i):
 
 
 def login():
-    zapi = ZabbixAPI("http://192.168.112.157:4720")
+    zapi = ZabbixAPI("https://zmonitor.ut.ac.ir")
     zapi.login("ririlinux", "ririlinux")
     return zapi
 
