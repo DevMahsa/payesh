@@ -19,7 +19,7 @@ def select_host(zapi):
 
 def login():
     zapi = ZabbixAPI("https://zmonitor.ut.ac.ir")
-    zapi.session.verify = False
+    # zapi.session.verify = False
     zapi.login("ririwindows", "ririwindows")
     return zapi
 

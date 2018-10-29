@@ -64,7 +64,7 @@ def time_sync(host, i):
 
 def login():
     zapi = ZabbixAPI("https://zmonitor.ut.ac.ir")
-    zapi.session.verify = False
+    # zapi.session.verify = False
     zapi.login("ririlinux", "ririlinux")
     return zapi
 
