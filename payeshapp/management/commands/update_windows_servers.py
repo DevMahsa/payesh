@@ -18,7 +18,7 @@ def select_host(zapi):
 
 def save_host(length, query):
     for count in range(length):
-        if WindowsServer.objects.filter(name=query[count]['name']).exists():
+        if WindowsServer.objects.filter(ip = query[count]['interfaces'][0]['ip']).exists():
             count += 1
             continue
         get = WindowsServer(name=query[count]['name'])
