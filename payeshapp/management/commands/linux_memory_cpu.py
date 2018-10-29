@@ -18,7 +18,7 @@ def select_host(zapi):
 
 
 def login():
-    zapi = ZabbixAPI("http://zmonitor.ut.ac.ir")
+    zapi = ZabbixAPI("https://zmonitor.ut.ac.ir")
     zapi.login("ririlinux", "ririlinux")
     return zapi
 

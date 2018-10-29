@@ -261,7 +261,7 @@ def mcafee(host, i):
 
 
 def login():
-    zapi = ZabbixAPI("http://zmonitor.ut.ac.ir")
+    zapi = ZabbixAPI("https://zmonitor.ut.ac.ir")
     zapi.login("ririwindows", "ririwindows")
     return zapi
 
