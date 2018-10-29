@@ -29,6 +29,7 @@ def save_host(length, query):
 
 def login():
     zapi = ZabbixAPI("https://zmonitor.ut.ac.ir")
+    zapi.session.verify = False
     zapi.login("ririlinux", "ririlinux")
     return zapi
 
