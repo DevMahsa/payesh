@@ -29,8 +29,16 @@ def save_host(length, query):
 
 
 def login():
+    """
+    login to zabbix api
+
+    """
     zapi = ZabbixAPI("https://zmonitor.ut.ac.ir")
-    zapi.session.verify = False
+    # Disable SSL certificate verification
+    # zapi.session.verify = False
+    #
+    # # Specify a timeout (in seconds)
+    # zapi.timeout = 5.1
     zapi.login("ririwindows", "ririwindows")
     return zapi
 
