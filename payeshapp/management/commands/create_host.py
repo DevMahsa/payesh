@@ -3,7 +3,7 @@ import csv
 from progressbar import ProgressBar, Percentage, ETA, ReverseBar, RotatingMarker, Timer
 
 zapi = ZabbixAPI("https://zmonitor.ut.ac.ir")
-zapi.login(user="", password="")
+zapi.login(user="mahsa_", password="Pooya871^")
 arq = csv.reader(open('/home/mahsa/PycharmProjects/payesh/payesh/hosts.csv'))
 linhas = sum(1 for linha in arq)
 f = csv.reader(open('/home/mahsa/PycharmProjects/payesh/payesh/hosts.csv'), delimiter=',')

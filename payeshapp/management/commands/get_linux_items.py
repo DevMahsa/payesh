@@ -16,7 +16,12 @@ def get_items():
                 time_sync(host, i)
                 firewall_status(host, i)
 
+
+
+
             host.save()
+
+
 
 
 
@@ -39,7 +44,7 @@ def firewall_status(host, i):
         elif i['name'].lower().find('firewall alternative') == 0:
             firewall1 = i['lastvalue'].split('running')
             firewall2 = i['lastvalue'].split('exited')
-            if len(firewall1) >= 2 :
+            if len(firewall1) >= 2:
                 host.firewall = "ON"
 
             elif  len(firewall2) >= 2:
@@ -48,6 +53,8 @@ def firewall_status(host, i):
                 host.firewall = "OFF"
     except IndexError:
         pass
+
+
 
 
 def time_sync(host, i):
