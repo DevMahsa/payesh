@@ -5,11 +5,7 @@ vm_name,IP,Server Name(sql),port,user,pass
 ,172.16.16.115,SQL2014,49563,ZabbixUser,ForGozare$hZx2018
 ,194.225.0.38,TRAFFIC,49779,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.143,,1433,ZabbixUser,ForGozare$hZx2018
-,172.16.16.245,CARDISSUEMANAGER,1433,ZabbixUser,ForGozare$hZx2018
-,194.225.0.221,,1433,ZabbixUser,ForGozare$hZx2018
-,194.225.0.220,,1433,ZabbixUser,ForGozare$hZx2018
-,172.16.0.77,BPMS,,ZabbixUser,ForGozare$hZx2018
-,172.16.16.215,,1433,ZabbixUser,ForGozare$hZx2018
+,192.168.115.67,,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.169,,5050,ZabbixUser,ForGozare$hZx2018
 ,194.225.0.189,DATACENTER,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.179,,1433,ZabbixUser,ForGozare$hZx2018
@@ -17,4 +13,9 @@ vm_name,IP,Server Name(sql),port,user,pass
 ,172.16.16.111,,1433,ZabbixUser,ForGozare$hZx2018
 ,194.225.0.42,,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.242,,1433,ZabbixUser,ForGozare$hZx2018
-,192.168.115.67,,1433,ZabbixUser,ForGozare$hZx2018
+,172.16.16.245,CARDISSUEMANAGER,1433,ZabbixUser,ForGozare$hZx2018
+,194.225.0.221,,1433,ZabbixUser,ForGozare$hZx2018
+,194.225.0.220,,1433,ZabbixUser,ForGozare$hZx2018
+,172.16.0.77,BPMS,,ZabbixUser,ForGozare$hZx2018
+,172.16.16.215,,1433,ZabbixUser,ForGozare$hZx2018
+
