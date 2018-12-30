@@ -48,6 +48,7 @@ def backup_url():
                 obj.save()
             except Exception as e:
                 print(str(e)+str(obj))
+                pass
         except pymssql.OperationalError:
             pass
 
