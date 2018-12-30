@@ -43,7 +43,7 @@ def backup_url():
             obj.backup_name = ""
             for i in range(len(result)):
                 obj.backup_name+= str(result[i][0])+' , '+str(result[i][1])+' , '+str(result[i][2])+' , '+str(result[i][3])+', '+'\n'
-                print(str(obj))
+            print(str(obj))
             obj.save()
         except pymssql.OperationalError:
             pass
