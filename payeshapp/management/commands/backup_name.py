@@ -41,10 +41,13 @@ def backup_url():
             #    "SELECT CONVERT(INT, ISNULL(value, value_in_use)) AS config_value FROM sys.configurations WHERE name = N'xp_cmdshell' ;''')
             result = cursor.fetchall()
             obj.backup_name = ""
-            for i in range(len(result)):
-                obj.backup_name+= str(result[i][0])+' , '+str(result[i][1])+' , '+str(result[i][2])+' , '+str(result[i][3])+', '+'\n'
-            print(str(obj))
-            obj.save()
+            try:
+                for i in range(len(result)):
+                    obj.backup_name+= str(result[i][0])+' , '+str(result[i][1])+' , '+str(result[i][2])+' , '+str(result[i][3])+', '+'\n'
+                print(str(obj))
+                obj.save()
+            except Exception as e:
+                print(str(e)+str(obj))
         except pymssql.OperationalError:
             pass
 
