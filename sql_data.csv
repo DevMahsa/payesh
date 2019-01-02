@@ -15,5 +15,4 @@ vm_name,IP,Server Name(sql),port,user,pass
 ,172.16.16.179,,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.235,,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.0.77,BPMS,1433,ZabbixUser,ForGozare$hZx2018
-,172.16.16.215,,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.111,,1433,ZabbixUser,ForGozare$hZx2018
