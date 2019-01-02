@@ -1,5 +1,4 @@
 vm_name,IP,Server Name(sql),port,user,pass
-,172.16.0.111,G2017,1070,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.103,,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.178,SQL2012FINAL,50020,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.115,SQL2014,49563,ZabbixUser,ForGozare$hZx2018
