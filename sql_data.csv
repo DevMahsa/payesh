@@ -7,7 +7,6 @@ vm_name,IP,Server Name(sql),port,user,pass
 ,192.168.115.67,,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.169,,5050,ZabbixUser,ForGozare$hZx2018
 ,172.16.0.111,G2017,1070,ZabbixUser,ForGozare$hZx2018
-,194.225.0.189,DATACENTER,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.179,,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.235,,1433,ZabbixUser,ForGozare$hZx2018
 ,172.16.16.111,,1433,ZabbixUser,ForGozare$hZx2018
