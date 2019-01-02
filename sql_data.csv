@@ -1,10 +1,6 @@
 vm_name,IP,Server Name(sql),port,user,pass
-,172.16.16.235,,1433,ZabbixUser,ForGozare$hZx2018
-,172.16.16.111,,1433,ZabbixUser,ForGozare$hZx2018
-,194.225.0.42,,1433,ZabbixUser,ForGozare$hZx2018
-,172.16.16.242,,1433,ZabbixUser,ForGozare$hZx2018
-,172.16.16.245,CARDISSUEMANAGER,1433,ZabbixUser,ForGozare$hZx2018
-,194.225.0.221,,1433,ZabbixUser,ForGozare$hZx2018
-,194.225.0.220,,1433,ZabbixUser,ForGozare$hZx2018
-,172.16.0.77,BPMS,,ZabbixUser,ForGozare$hZx2018
-,172.16.16.215,,1433,ZabbixUser,ForGozare$hZx2018
+,172.16.0.111,G2017,1070,ZabbixUser,ForGozare$hZx2018
+,172.16.16.103,,1433,ZabbixUser,ForGozare$hZx2018
+,172.16.16.178,SQL2012FINAL,50020,ZabbixUser,ForGozare$hZx2018
+,172.16.16.115,SQL2014,49563,ZabbixUser,ForGozare$hZx2018
+,194.225.0.38,TRAFFIC,49779,ZabbixUser,ForGozare$hZx2018

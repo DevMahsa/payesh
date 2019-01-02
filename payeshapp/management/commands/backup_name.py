@@ -15,12 +15,8 @@ def backup_url():
             port=sql_data_auth.port
             user=sql_data_auth.user
             password=sql_data_auth.password
-            # host='17
-            #
-            #
-            # 2.16.0.111'
-            # server='G2017'
-            # port='1070'
+            host = ''
+            server = ''
             connection = pymssql.connect(host=host, server=server, port=port, user=user,
                                          password=password)
             cursor = connection.cursor()
