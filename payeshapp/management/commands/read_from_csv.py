@@ -15,7 +15,8 @@ def where_file():
 
 def read_csv_action(file):
     try :
-
+        s = SqlDataAuth.objects.filter(id__isnull=False).all()
+        s.delete()
         for i in range(0, list(pd.read_csv(file)._values).__len__()):
             #det = pd.read_csv(file)._values[i][0].split(';')
             det = pd.read_csv(file)._values[i]
@@ -33,7 +34,6 @@ def save_distinct(host, name, password, port, server, user):
     if not SqlDataAuth.objects.filter(host=host).exists():
         sql_data_auth = SqlDataAuth(name=name, host=host, server=server, port=port, user=user, password=password)
         sql_data_auth.save()
-
 
 class Command(BaseCommand):
     def handle(self, **options):
