@@ -15,14 +15,58 @@ def get_items():
                 host.date = datetime.now()
                 time_sync(host, i)
                 firewall_status(host, i)
-
-
-
+                user(host,i)
+                flist = local_user(i)
 
             host.save()
 
 
+""" last_db_backup = models.TextField( null= True)
+    db_backup_size = models.TextField( null= True)
+    maxusedmemory = models.CharField(max_length=500, null=True)
+    maxusedcpu = models.CharField(max_length=500, null=True)
+    access_db_config = models.CharField(max_length=500 , null= True)
+    linux_update = models.CharField(max_length=500 , null= True)
+    linux_version = models.CharField(max_length=500 , null= True)
+    db_version = models.CharField(max_length=500 , null= True)
+    firewall = models.CharField(max_length=500, null=True)
+    iptables = models.CharField(max_length=500, null=True)
+    open_port = models.TextField( null= True)
+    puppet = models.CharField(max_length=500, null=True)
+    chef = models.CharField(max_length=500, null=True)
+    ssh_port = models.CharField(max_length=500, null=True)
+    telnet = models.CharField(max_length=500, null=True)
+    root_login = models.CharField(max_length=500, null=True)
+    ssl_cert_exp_date = models.CharField(max_length=500, null=True)
+    pass_exp_date = models.CharField(max_length=500, null=True)
+"""
 
+
+
+def local_user(i):
+    if i['name'].lower().find('local user')==0:
+        mylist = ""
+        temp = i['lastvalue'].split(':x:')
+        mylist += temp[0]
+        for j in range(1, len(temp)):
+            mylist += temp[j].split('/bin/bash')[1]
+        flist = mylist.split('\n')
+        return flist
+
+
+
+
+
+
+def user(host,i):
+    if i['name'].lower().find('local user') == 0:
+        mylist = ""
+        temp = i['lastvalue'].split(':x:')
+        mylist += temp[0]
+        for j in range(1, len(temp)):
+            mylist += temp[j].split('/bin/bash')[1]
+        flist = mylist.split('\n')
+        host.loacl_user = str(flist)
 
 
 def firewall_status(host, i):
@@ -65,6 +109,8 @@ def time_sync(host, i):
             host.ut_time_sync = "YES"
         else:
             host.ut_time_sync = "NO"
+
+
 
 
 
