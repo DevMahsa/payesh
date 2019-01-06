@@ -3,8 +3,8 @@ from django.core.management.base import BaseCommand
 from pyzabbix import ZabbixAPI
 from payeshapp.models import LinuxServer
 
-def get_items():
 
+def get_items():
     zapi = login()
 
     for h in zapi.host.get(output="extend"):
@@ -15,8 +15,7 @@ def get_items():
                 host.date = datetime.now()
                 time_sync(host, i)
                 firewall_status(host, i)
-                user(host,i)
-                flist = local_user(i)
+                user(host, i)
 
             host.save()
 
@@ -42,9 +41,8 @@ def get_items():
 """
 
 
-
 def local_user(i):
-    if i['name'].lower().find('local user')==0:
+    if i['name'].lower().find('local user') == 0:
         mylist = ""
         temp = i['lastvalue'].split(':x:')
         mylist += temp[0]
@@ -54,11 +52,7 @@ def local_user(i):
         return flist
 
 
-
-
-
-
-def user(host,i):
+def user(host, i):
     if i['name'].lower().find('local user') == 0:
         mylist = ""
         temp = i['lastvalue'].split(':x:')
@@ -66,19 +60,19 @@ def user(host,i):
         for j in range(1, len(temp)):
             mylist += temp[j].split('/bin/bash')[1]
         flist = mylist.split('\n')
-        host.loacl_user = str(flist)
+        host.local_user = str(flist)
 
 
 def firewall_status(host, i):
     try:
-        if i['name'].lower().find('firewall status deb based') ==0:
+        if i['name'].lower().find('firewall status deb based') == 0:
             firewall2 = i['lastvalue'].split('exited')
 
             if len(firewall2) >= 2:
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
-        elif i['name'].lower().find('firewall status rpm based') ==0:
+        elif i['name'].lower().find('firewall status rpm based') == 0:
             firewall1 = i['lastvalue'].split('running')
             if len(firewall1) >= 2:
                 host.firewall = "ON"
@@ -91,7 +85,7 @@ def firewall_status(host, i):
             if len(firewall1) >= 2:
                 host.firewall = "ON"
 
-            elif  len(firewall2) >= 2:
+            elif len(firewall2) >= 2:
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
@@ -99,20 +93,13 @@ def firewall_status(host, i):
         pass
 
 
-
-
 def time_sync(host, i):
-
-    if i['name'].lower().find('is time sync')==0:
+    if i['name'].lower().find('is time sync') == 0:
         time = i['lastvalue'].split('192.168.20.23')
         if len(time) >= 2:
             host.ut_time_sync = "YES"
         else:
             host.ut_time_sync = "NO"
-
-
-
-
 
 
 def login():
@@ -125,5 +112,3 @@ def login():
 class Command(BaseCommand):
     def handle(self, **options):
         get_items()
-
-
