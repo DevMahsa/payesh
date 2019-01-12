@@ -15,6 +15,7 @@ def get_items():
                 time_sync(host, i)
                 firewall_status(host, i)
                 user(host, i)
+                servcie(host, i)
 
             host.save()
 
@@ -30,18 +31,45 @@ def get_items():
     firewall = models.CharField(max_length=500, null=True)
     iptables = models.CharField(max_length=500, null=True)
     open_port = models.TextField( null= True)
-    puppet = models.CharField(max_length=500, null=True)
-    chef = models.CharField(max_length=500, null=True)
     ssh_port = models.CharField(max_length=500, null=True)
-    telnet = models.CharField(max_length=500, null=True)
     root_login = models.CharField(max_length=500, null=True)
     ssl_cert_exp_date = models.CharField(max_length=500, null=True)
     pass_exp_date = models.CharField(max_length=500, null=True)
 """
 
 
-def local_user(i):
+def servcie(host, i):
+    if i['name'].lower().find('all running services centos') == 0:
+        if i['lastvalue'].split('Permission denied').__len__() >= 2:
+            if i['name'].lower().find('all running services ubuntu') == 0:
+                ubuntulist = ""
+                if i['lastvalue'].split('telnet').__len__() >= 2:
+                    host.telnet = "enable"
+                if i['lastvalue'].split('anydesk').__len__() >= 2:
+                    host.anydesk = "enable"
+                if i['lastvalue'].split('puppet').__len__() >= 2:
+                    host.puppet = "enable"
+                if i['lastvalue'].split('chef').__len__() >= 2:
+                    host.chef = "enable"
+        else:
+            centoslist = ""
+            # if i['lastvalue'].split('sshd').__len__() >= 2:
+            #     host
+            # if i['lastvalue'].split('firewalld').__len__() >= 2:
+            #     return ""
+            if i['lastvalue'].split('telnet').__len__() >= 2:
+                host.telnet = "enable"
+            if i['lastvalue'].split('anydesk').__len__() >= 2:
+                host.anydesk = "enable"
+            if i['lastvalue'].split('puppet').__len__() >= 2:
+                host.puppet = "enable"
+            if i['lastvalue'].split('chef').__len__() >= 2:
+                host.chef = "enable"
+            # if i['lastvalue'].split('iptables').__len__() >= 2:
+            #     return ""
 
+
+def local_user(i):
     if i['name'].lower().find('local user') == 0:
         mylist = ""
         temp = i['lastvalue'].split(':x:')
@@ -50,8 +78,6 @@ def local_user(i):
             mylist += temp[j].split('/bin/bash')[1]
         flist = mylist.split('\n')
         return flist
-
-
 
 
 def user(host, i):
