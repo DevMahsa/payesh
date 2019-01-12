@@ -45,12 +45,20 @@ def servcie(host, i):
                 ubuntulist = ""
                 if i['lastvalue'].split('telnet').__len__() >= 2:
                     host.telnet = "enable"
+                else:
+                    host.chef = "No such service"
                 if i['lastvalue'].split('anydesk').__len__() >= 2:
                     host.anydesk = "enable"
+                else:
+                    host.chef = "No such service"
                 if i['lastvalue'].split('puppet').__len__() >= 2:
                     host.puppet = "enable"
+                else:
+                    host.chef = "No such service"
                 if i['lastvalue'].split('chef').__len__() >= 2:
                     host.chef = "enable"
+                else:
+                    host.chef = "No such service"
         else:
             centoslist = ""
             # if i['lastvalue'].split('sshd').__len__() >= 2:
@@ -59,12 +67,21 @@ def servcie(host, i):
             #     return ""
             if i['lastvalue'].split('telnet').__len__() >= 2:
                 host.telnet = "enable"
+            else:
+                host.chef = "No such service"
             if i['lastvalue'].split('anydesk').__len__() >= 2:
                 host.anydesk = "enable"
+            else:
+                host.chef = "No such service"
             if i['lastvalue'].split('puppet').__len__() >= 2:
                 host.puppet = "enable"
+            else:
+                host.chef = "No such service"
             if i['lastvalue'].split('chef').__len__() >= 2:
                 host.chef = "enable"
+            else:
+                host.chef = "No such service"
+
             # if i['lastvalue'].split('iptables').__len__() >= 2:
             #     return ""
 
