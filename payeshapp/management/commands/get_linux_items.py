@@ -46,15 +46,15 @@ def servcie(host, i):
                 if i['lastvalue'].split('telnet').__len__() >= 2:
                     host.telnet = "enable"
                 else:
-                    host.chef = "No such service"
+                    host.telnet = "No such service"
                 if i['lastvalue'].split('anydesk').__len__() >= 2:
                     host.anydesk = "enable"
                 else:
-                    host.chef = "No such service"
+                    host.anydesk = "No such service"
                 if i['lastvalue'].split('puppet').__len__() >= 2:
                     host.puppet = "enable"
                 else:
-                    host.chef = "No such service"
+                    host.puppet = "No such service"
                 if i['lastvalue'].split('chef').__len__() >= 2:
                     host.chef = "enable"
                 else:
@@ -68,15 +68,15 @@ def servcie(host, i):
             if i['lastvalue'].split('telnet').__len__() >= 2:
                 host.telnet = "enable"
             else:
-                host.chef = "No such service"
+                host.telnet = "No such service"
             if i['lastvalue'].split('anydesk').__len__() >= 2:
                 host.anydesk = "enable"
             else:
-                host.chef = "No such service"
+                host.anydesk = "No such service"
             if i['lastvalue'].split('puppet').__len__() >= 2:
                 host.puppet = "enable"
             else:
-                host.chef = "No such service"
+                host.puppet = "No such service"
             if i['lastvalue'].split('chef').__len__() >= 2:
                 host.chef = "enable"
             else:
