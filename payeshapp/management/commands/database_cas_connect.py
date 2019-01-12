@@ -1,6 +1,6 @@
 import pymysql
-connection=pymysql.connect(host='', database='', user='', password='')
+connection=pymysql.connect(host='127.0.0.1',database='zabbix',user='zabbix',password='root')
 cursor = connection.cursor()
-cursor.execute('''SELECT count(*) FROM ut_cas4.SERVICETICKET;''')
+cursor.execute('''SELECT count(itemid) AS history FROM history WHERE itemid NOT IN (SELECT itemid FROM items WHERE status='0');
+''')
 result = cursor.fetchall()
-print(int(result[0][0]))

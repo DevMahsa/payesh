@@ -8,7 +8,6 @@ def get_items():
     zapi = login()
 
     for h in zapi.host.get(output="extend"):
-
         for host in LinuxServer.objects.filter(name=h['name']):
 
             for i in zapi.item.get(filter={'host': host.name}):
@@ -42,6 +41,7 @@ def get_items():
 
 
 def local_user(i):
+
     if i['name'].lower().find('local user') == 0:
         mylist = ""
         temp = i['lastvalue'].split(':x:')
@@ -50,6 +50,8 @@ def local_user(i):
             mylist += temp[j].split('/bin/bash')[1]
         flist = mylist.split('\n')
         return flist
+
+
 
 
 def user(host, i):
