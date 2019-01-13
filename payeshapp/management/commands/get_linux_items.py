@@ -40,7 +40,7 @@ def get_items():
 
 def version(host,i):
     if i['name'].lower().find('linux version') ==0:
-        host.linux_version=['lastvalue']
+        host.linux_version = i['lastvalue']
 
 def servcie(host, i):
     if i['name'].lower().find('all running services centos') == 0:
