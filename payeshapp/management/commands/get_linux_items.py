@@ -16,7 +16,7 @@ def get_items():
                 firewall_status(host, i)
                 user(host, i)
                 servcie(host, i)
-
+                version(host,i)
             host.save()
 
 
@@ -37,6 +37,10 @@ def get_items():
     pass_exp_date = models.CharField(max_length=500, null=True)
 """
 
+
+def version(host,i):
+    if i['name'].lower().find('linux version') ==0:
+        host.linux_version=['lastvalue']
 
 def servcie(host, i):
     if i['name'].lower().find('all running services centos') == 0:

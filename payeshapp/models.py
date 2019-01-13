@@ -96,7 +96,7 @@ class LinuxServer(models.Model):
     ut_time_sync = models.CharField(max_length=500 ,null= True)
     access_db_config = models.CharField(max_length=500 , null= True)
     linux_update = models.CharField(max_length=500 , null= True)
-    linux_version = models.CharField(max_length=500 , null= True)
+    linux_version = models.TextField( null= True)
     db_version = models.CharField(max_length=500 , null= True)
     firewall = models.CharField(max_length=500, null=True)
     iptables = models.CharField(max_length=500, null=True)
