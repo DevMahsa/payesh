@@ -41,7 +41,8 @@ def update(host,i):
     if i['name'].lower().find('centos last update') ==0 :
         if i['lastvalue'].split('cannot').__len__() >=2 :
             if i['name'].lower().find('ubuntu last update') == 0:
-                host.linux_update = i['lastvalue']
+                if i['lastvalue'].split('rpm').__len__() < 2 or i['lastvalue'].split('yum').__len__() < 2:
+                    host.linux_update = i['lastvalue']
         else:
             host.linux_update = i['lastvalue']
 
