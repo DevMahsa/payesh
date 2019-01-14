@@ -17,6 +17,7 @@ def get_items():
                 user(host, i)
                 servcie(host, i)
                 version(host,i)
+                update(host,i)
             host.save()
 
 
@@ -26,7 +27,6 @@ def get_items():
     maxusedcpu = models.CharField(max_length=500, null=True)
     access_db_config = models.CharField(max_length=500 , null= True)
     linux_update = models.CharField(max_length=500 , null= True)
-    linux_version = models.CharField(max_length=500 , null= True)
     db_version = models.CharField(max_length=500 , null= True)
     firewall = models.CharField(max_length=500, null=True)
     iptables = models.CharField(max_length=500, null=True)
@@ -36,6 +36,16 @@ def get_items():
     ssl_cert_exp_date = models.CharField(max_length=500, null=True)
     pass_exp_date = models.CharField(max_length=500, null=True)
 """
+
+def update(host,i):
+    if i['name'].lower().find('centos last update') ==0 :
+        if i['lastvalue'].split('cannot').__len__() >=2 :
+            if i['name'].lower().find('ubuntu last update') == 0:
+                host.linux_update = i['lastvalue']
+        else:
+            host.linux_update = i['lastvalue']
+
+
 
 
 def version(host,i):
