@@ -7,10 +7,14 @@ from payeshapp.models import LinuxServer
 def get_items():
     zapi = login()
 
-    for h in zapi.host.get(output="extend"):
-        for host in LinuxServer.objects.filter(name=h['name']):
+    dict = zapi.host.get(output="extend",selectInterfaces="extend")
+    for h in range(len(dict)):
+        ip = dict[h]['interfaces'][0]['ip']
+        hostid = dict[h]['hostid']
+        # zapi.host.get(output="extend", selectInterfaces="extend")[0]['interfaces'][0]['ip']
+        for host in LinuxServer.objects.filter(hostid=hostid):
 
-            for i in zapi.item.get(filter={'host': host.name}):
+            for i in zapi.item.get(filter={'hostid': hostid}, output="extend"):
                 host.date = datetime.now()
                 time_sync(host, i)
                 firewall_status(host, i)
@@ -26,7 +30,6 @@ def get_items():
     maxusedmemory = models.CharField(max_length=500, null=True)
     maxusedcpu = models.CharField(max_length=500, null=True)
     access_db_config = models.CharField(max_length=500 , null= True)
-    linux_update = models.CharField(max_length=500 , null= True)
     db_version = models.CharField(max_length=500 , null= True)
     firewall = models.CharField(max_length=500, null=True)
     iptables = models.CharField(max_length=500, null=True)
@@ -38,19 +41,19 @@ def get_items():
 """
 
 def update(host,i):
-    if i['name'].lower().find('centos last update') ==0 :
-        if i['lastvalue'].split('cannot').__len__() >=2 :
-            if i['name'].lower().find('ubuntu last update') == 0:
-                if i['lastvalue'].split('rpm').__len__() < 2 or i['lastvalue'].split('yum').__len__() < 2:
-                    host.linux_update = i['lastvalue']
-        else:
+    if i['key_'].find('system.run["rpm -qa --last | head -n 1"]') == 0:
+        host.linux_update = i['lastvalue']
+    elif i['key_'].find('system.run["ls -alt /var/lib/dpkg/info | head -n 4"]') == 0:
+        if i['lastvalue'].find('cannot') > 1:
+
             host.linux_update = i['lastvalue']
 
 
 
 
+
 def version(host,i):
-    if i['name'].lower().find('linux version') ==0:
+    if i['name'].lower().find('linux version') == 0:
         host.linux_version = i['lastvalue']
 
 def servcie(host, i):
