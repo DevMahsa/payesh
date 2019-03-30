@@ -68,7 +68,7 @@ def firewall_status(host, i):
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
-                email = EmailMessage('Firewall is OFF', str(host) + ': Firewall is OFF', to=['mahsa.gol89@gmail.com'])
+                email = EmailMessage('Firewall is OFF', str(host) + '***:Firewall is OFF', to=['mahsa.gol89@gmail.com'])
                 email.send()
     except IndexError:
         pass
