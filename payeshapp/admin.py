@@ -1,6 +1,5 @@
 import csv
 from datetime import datetime
-
 import xlwt
 from django.contrib import admin
 from django.http import HttpResponse

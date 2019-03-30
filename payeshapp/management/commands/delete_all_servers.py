@@ -1,4 +1,4 @@
-from models import LastCpu, LastMemory, WindowsServer
+from payeshapp.models import LastCpu, LastMemory, WindowsServer
 from django.core.management.base import BaseCommand
 
 

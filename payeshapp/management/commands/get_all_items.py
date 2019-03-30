@@ -2,6 +2,7 @@ from  datetime import datetime
 from django.core.management.base import BaseCommand
 from pyzabbix import ZabbixAPI
 from payeshapp.models import WindowsServer
+from django.core.mail import EmailMessage
 
 def get_items():
 
@@ -53,6 +54,8 @@ def firewall_status(host, i):
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
+                email = EmailMessage('Firewall is OFF', str(host) + 'FIREWALL is OFF', to=['mahsa.gol89@gmail.com'])
+                email.send()
         elif i['name'].lower().find('firewall status deb based') ==0:
             firewall = i['lastvalue'].split('active')
             if len(firewall) >= 2:
@@ -65,6 +68,8 @@ def firewall_status(host, i):
                 host.firewall = "ON"
             else:
                 host.firewall = "OFF"
+                email = EmailMessage('Firewall is OFF', str(host) + ': Firewall is OFF', to=['mahsa.gol89@gmail.com'])
+                email.send()
     except IndexError:
         pass
 
@@ -258,6 +263,9 @@ def mcafee(host, i):
             host.mcafee = 'ON'
         else:
             host.mcafee = 'OFF'
+
+
+
 
 
 def login():
