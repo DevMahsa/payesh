@@ -49,7 +49,7 @@ def get_items():
 
 def last_shutdown(host,i):
     if i['name'].lower().find('eventlog system shutdown') ==0:
-        last_shutdown = i['lastvalue'].split('----------------')[1].split('-------                    ')[1].split('6006')[0]
+        last_shutdown = i['lastvalue']
         host.last_shutdown = last_shutdown
 
 
