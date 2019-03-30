@@ -49,8 +49,15 @@ def get_items():
 
 def last_shutdown(host,i):
     if i['name'].lower().find('eventlog system shutdown') ==0:
-        last_shutdown = i['lastvalue']
-        host.last_shutdown = last_shutdown
+        temp = []
+        try:
+            temp = i['lastvalue'].split('Message')[1].split('6006')[0].split('-')
+            last_shutdown = temp[len(temp) - 1]
+            host.last_shutdown = last_shutdown
+        except IndexError:
+            # print(host)
+            pass
+
 
 
 def netcheck(host, i):
