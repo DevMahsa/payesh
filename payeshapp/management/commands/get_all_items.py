@@ -49,7 +49,7 @@ def get_items():
 def netcheck(host, i):
     if i['name'].lower().find('net ping check') == 0:
         network = i['lastvalue']
-        if network == 0:
+        if network == '0':
             host.network = "OK"
         else:
             host.network = "Problem"
