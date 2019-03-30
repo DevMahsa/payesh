@@ -38,6 +38,7 @@ def get_items():
                 time_sync(host, i)
                 firewall_status(host, i)
                 smb_config(host, i)
+                netcheck(host,i)
 
                 #if i['name'].encode('utf-8').lower().find('all open port')==0:
                  #   host.open_ports = i['lastvalue'].encode('utf-8')
@@ -45,6 +46,13 @@ def get_items():
             host.save()
 
 
+def netcheck(host, i):
+    if i['name'].lower().find('net ping check') == 0:
+        network = i['lastvalue']
+        if network == 0:
+            host.network = "OK"
+        else:
+            host.network = "Problem"
 
 def firewall_status(host, i):
     try:
