@@ -37,7 +37,7 @@ class WindowsServer(models.Model):
     local_user = models.TextField( null= True)
     win_active = models.CharField(max_length=500, null=True)
     network = models.CharField(max_length=500, null=True)
-
+    last_shutdown = models.CharField(max_length=500,null=True)
 
 
     def __str__(self):

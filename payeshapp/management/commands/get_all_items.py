@@ -39,11 +39,18 @@ def get_items():
                 firewall_status(host, i)
                 smb_config(host, i)
                 netcheck(host,i)
+                last_shutdown(host,i)
 
                 #if i['name'].encode('utf-8').lower().find('all open port')==0:
                  #   host.open_ports = i['lastvalue'].encode('utf-8')
 
             host.save()
+
+
+def last_shutdown(host,i):
+    if i['name'].lower().find('eventlog system shutdown') ==0:
+        last_shutdown = i['lastvalue'].split('----------------')[1].split('-------                    ')[1].split('6006')[0]
+        host.last_shutdown = last_shutdown
 
 
 def netcheck(host, i):
