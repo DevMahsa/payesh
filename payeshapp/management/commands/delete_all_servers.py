@@ -5,7 +5,7 @@ from django.core.management.base import BaseCommand
 
 class Command(BaseCommand):
     def handle(self, **options):
-        servers = WindowsServer.objects.filter.all()
+        servers = WindowsServer.objects.filter(hostid__isnull=False).all()
         delete_server(servers)
 
 
