@@ -13,8 +13,8 @@ def ssl_cert_exp():
             # dt = datetime(int(year), int(month), int(day))
             obj.ssl_cert_exp = str(year + '-' + month + '-' + day)
             obj.save()
-    except Exception as  e:
-        print(e)
+    except Exception as e:
+        print(str(e)+str(obj))
         pass
 
 def chack_ssl_cert(ssl_data):
