@@ -1,6 +1,29 @@
 hostip,addr
 172.16.16.103,eoffice1.ut.ac.ir
 172.16.0.111,ems1.ut.ac.ir
+192.168.115.54,stm1.ut.ac.ir
+172.16.16.160,pms1.ut.ac.ir
+172.16.16.115,edr.ut.ac.ir
+172.16.16.101,eoffice2.ut.ac.ir
+172.16.16.122,bis1.ut.ac.ir
+172.16.0.77,bpms.ut.ac.ir
+172.16.11.9,cecm.ut.ac.ir
+172.16.16.124,filemanager.ut.ac.ir
+172.16.0.110,ems1.ut.ac.ir
+194.225.0.38,utta.ut.ac.ir
+194.225.0.202,ess2.ut.ac.ir
+172.16.16.143,resclinic.ut.ac.ir
+172.16.16.153,ims1.ut.ac.ir
+172.16.16.133,splc.ut.ac.ir
+172.16.16.242,sls.ut.ac.ir
+172.16.16.170,erp1.ut.ac.ir
+172.16.16.149,fas1.ut.ac.ir
+172.16.16.215,dcoma.ut.ac.ir
+172.16.16.182,dining1.ut.ac.ir
+172.16.16.125,rtis2.ut.ac.ir
+194.225.0.121,conference.ut.ac.ir
+172.16.11.25,press.ut.ac.ir
+172.16.16110,journals.ut.ac.ir
 
 
 
