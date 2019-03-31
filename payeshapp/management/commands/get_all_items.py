@@ -62,11 +62,11 @@ def last_shutdown(host,i):
 
 def netcheck(host, i):
     if i['name'].lower().find('net ping check') == 0:
-        network = i['lastvalue']
-        if network == '0':
-            host.network = "OK"
+        internet = i['lastvalue']
+        if internet == '0':
+            host.internet = "OK"
         else:
-            host.network = "Problem"
+            host.internet = "Problem"
 
 def firewall_status(host, i):
     try:

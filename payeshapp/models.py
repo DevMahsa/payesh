@@ -36,7 +36,7 @@ class WindowsServer(models.Model):
     ssl_cert_exp = models.CharField(max_length=500, null=True)
     local_user = models.TextField( null= True)
     win_active = models.CharField(max_length=500, null=True)
-    network = models.CharField(max_length=500, null=True)
+    internet = models.CharField(max_length=500, null=True)
     last_shutdown = models.CharField(max_length=500,null=True)
 
 
