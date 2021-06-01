@@ -20,5 +20,5 @@ pytz==2018.5
 pyzabbix==0.7.4
 requests==2.19.1
 six==1.11.0
-urllib3==1.23
+urllib3==1.26.5
 XlsxWriter==1.0.5
